@@ -1,11 +1,7 @@
-import {useState} from 'react';
-import Expenses from './components/Expenses/Expenses';
-import NewExpense from './components/NewExpense/NewExpense';
-import ExpensesFilter from './components/ExpensesFilter/ExpensesFilter';
+import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 const App = () => {
-  const [year, setyear] = useState(2022);
- 
   const expenses = [
     {
       id: 1,
@@ -29,20 +25,15 @@ const App = () => {
 
   const addExpenseDataHandler = (expenseData) => {
     console.log(expenseData);
-  }
-
-  const filterExpensesHandler = (date) => {
-    setyear(date);
-  }
+  };
 
   return (
     <div>
-      <h2>Let's get started!</h2>   
-      <NewExpense onAddExpense={addExpenseDataHandler}/>
-      <ExpensesFilter onFilterExpenses={filterExpensesHandler}/>
-      <Expenses items={expenses} filterExpenses={year}/>
+      <h2>Let's get started!</h2>
+      <NewExpense onAddExpense={addExpenseDataHandler} />
+      <Expenses items={expenses} />
     </div>
   );
-}
+};
 
 export default App;
