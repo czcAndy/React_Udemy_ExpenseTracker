@@ -27,14 +27,20 @@ const ExpenseForm = (props) => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-
-    console.log(expenseData);
-    props.onSaveExpenseData(expenseData);
-
     
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
+
+    props.onSaveExpenseData(expenseData);
+  };
+
+  const cancelFormHandler = () => {
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
+
+    props.onCancelExpense();
   };
 
   return (
@@ -70,10 +76,12 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="reset" onClick={cancelFormHandler}>
+          Cancel
+        </button>
         <button type="submit">Add expense</button>
       </div>
     </form>
   );
 };
-
 export default ExpenseForm;
